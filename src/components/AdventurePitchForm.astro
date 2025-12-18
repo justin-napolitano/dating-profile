@@ -1,0 +1,154 @@
+---
+const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
+---
+<section id="adventure-pitch" class="rounded-3xl border border-white/10 bg-slate-950/40 p-8 shadow-lg shadow-emerald-500/10">
+	<div class="flex flex-col gap-6">
+		<header class="flex flex-col gap-2">
+			<p class="text-sm uppercase tracking-[0.3em] text-emerald-300">Adventure pitches</p>
+			<h2 class="text-3xl font-semibold text-white">Pitch the plan before we lock the time</h2>
+			<p class="text-base text-slate-300">
+				Give me the who/what/why, and I'll send the green light plus the Cal link.
+			</p>
+		</header>
+		<form id="adventure-pitch-form" class="grid gap-4" method="post" action="/api/pitch">
+			<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+				Name or nickname
+				<input
+					class="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+					type="text"
+					name="name"
+					required
+					placeholder="Jay, spontaneous instigator"
+				/>
+			</label>
+			<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+				Where to reply
+				<input
+					class="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+					type="text"
+					name="contact"
+					required
+					placeholder="IG @, Signal handle, or email"
+				/>
+			</label>
+			<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+				Adventure details
+				<textarea
+					class="min-h-[140px] rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+					name="adventure"
+					required
+					placeholder="Sunrise drive to Storm King, brunch picnic, finish with vinyl + board games"
+				></textarea>
+			</label>
+			<div class="grid gap-4 md:grid-cols-2">
+				<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+					Ideal timing
+					<input
+						class="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+						type="text"
+						name="timeline"
+						placeholder="Next Friday, late June, etc."
+					/>
+				</label>
+				<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+					Energy check
+					<input
+						class="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+						type="text"
+						name="vibes"
+						placeholder="Cozy, chaotic, bougie, etc."
+					/>
+				</label>
+			</div>
+			<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+				Anything else I should know?
+				<textarea
+					class="min-h-[100px] rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+					name="extras"
+					placeholder="+1 details, non-negotiables, playlists, etc."
+				></textarea>
+			</label>
+			<div class="flex flex-col gap-2">
+				<button
+					type="submit"
+					class="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-400 to-sky-400 px-6 py-3 text-base font-semibold text-slate-950 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+				>
+					Send the pitch
+				</button>
+				<a
+					href={adventureCalUrl}
+					target="_blank"
+					rel="noreferrer"
+					class="text-sm text-slate-400 underline-offset-4 transition hover:text-white hover:underline"
+				>
+					Already approved? Jump straight to the Cal link.
+				</a>
+			</div>
+		</form>
+		<p id="adventure-pitch-feedback" class="text-sm text-slate-300" aria-live="polite">
+			I'll reply from justin@justin-napolitano.com before we hop on the calendar. Already in motion?
+			<a class="text-emerald-300 underline-offset-4 hover:underline" href={adventureCalUrl} target="_blank" rel="noreferrer">
+				cal.com/justin-napolitano-gvu3p3/adventure
+			</a>
+		</p>
+		</div>
+</section>
+<script is:inline>
+	const form = document.getElementById('adventure-pitch-form');
+	const feedback = document.getElementById('adventure-pitch-feedback');
+	const submitButton = form?.querySelector('button[type="submit"]');
+	const defaultButtonText = submitButton?.textContent ?? '';
+	const calUrl = ${JSON.stringify(adventureCalUrl)};
+
+	function setFeedback(message, state, asHtml = false) {
+		if (!feedback) return;
+		if (asHtml) {
+			feedback.innerHTML = message;
+		} else {
+			feedback.textContent = message;
+		}
+		feedback.classList.remove('text-emerald-300', 'text-rose-300');
+		if (state === 'success') {
+			feedback.classList.add('text-emerald-300');
+		} else if (state === 'error') {
+			feedback.classList.add('text-rose-300');
+		}
+	}
+
+	form?.addEventListener('submit', async (event) => {
+		event.preventDefault();
+		if (!form) return;
+		const formData = new FormData(form);
+		const payload = Object.fromEntries(formData.entries());
+		setFeedback('Sending your pitch...', 'loading');
+		if (submitButton) {
+			submitButton.disabled = true;
+			submitButton.textContent = 'Sending...';
+		}
+
+		try {
+			const response = await fetch(form.action, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(payload)
+			});
+			const result = await response.json().catch(() => ({}));
+			if (!response.ok || !result?.success) {
+				throw new Error(result?.error ?? 'Unable to send the pitch right now. Try again.');
+			}
+			form.reset();
+			const successMessage = `Pitch sent. I'll reply ASAP - or grab your slot via <a class="underline" target="_blank" rel="noreferrer" href="${calUrl}">Cal</a>.`;
+			setFeedback(successMessage, 'success', true);
+		} catch (error) {
+			const message = error instanceof Error ? error.message : 'Unknown error. Please try again soon.';
+			setFeedback(message, 'error');
+		} finally {
+			if (submitButton) {
+				submitButton.disabled = false;
+				submitButton.textContent = defaultButtonText;
+			}
+		}
+	});
+</script>

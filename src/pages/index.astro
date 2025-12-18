@@ -1,11 +1,17 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import PageLayout from '../layouts/PageLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import StatusTicker from '../components/StatusTicker.astro';
+import LinksSection from '../components/LinksSection.astro';
+import WorkSection from '../components/WorkSection.astro';
+import CalEmbed from '../components/CalEmbed.astro';
 ---
-
-<Layout>
-	<Welcome />
-</Layout>
+<PageLayout title="Justin Napolitano" description="A social-proof-heavy dating profile landing page">
+	<main class="mx-auto flex max-w-5xl flex-col gap-12 px-4 py-12 sm:px-8">
+		<HeroSection />
+		<StatusTicker />
+		<LinksSection />
+		<WorkSection />
+		<CalEmbed />
+	</main>
+</PageLayout>

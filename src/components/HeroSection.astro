@@ -1,0 +1,17 @@
+---
+import { profile } from '../config/profile';
+---
+<section class="rounded-3xl border border-white/10 bg-slate-900/60 p-8 shadow-2xl shadow-fuchsia-500/10">
+	<div class="flex flex-col gap-5">
+		<span class="w-fit rounded-full border border-emerald-400/40 bg-emerald-400/10 px-3 py-1 text-sm text-emerald-200">
+			Verified
+		</span>
+		<div class="flex flex-col gap-2">
+			<p class="text-4xl font-semibold text-white">{profile.name}</p>
+			<div>
+				<p class="text-sm uppercase tracking-[0.2em] text-slate-400">Location</p>
+				<p class="text-xl text-slate-300">{profile.location}</p>
+			</div>
+		</div>
+	</div>
+</section>
