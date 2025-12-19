@@ -1,20 +1,20 @@
 ---
 import { socialProofEntries } from '../config/profile';
 ---
-<section class="rounded-3xl border border-white/5 bg-slate-900/30 p-8">
+<section class="rounded-3xl border border-rose-50/10 bg-[#150e0c]/80 p-8">
 	<header class="mb-6 flex flex-col gap-2">
-		<p class="text-sm uppercase tracking-[0.3em] text-slate-400">References</p>
+		<p class="text-xs uppercase tracking-[0.18em] text-rose-300/80">References</p>
 		<h2 class="text-3xl font-semibold text-white">People who actually text me back</h2>
-		<p class="text-slate-300">
+		<p class="text-rose-200/80">
 			Tighter quotes live in group chats, but these are the ones friends approved for public use.
 		</p>
 	</header>
 	<div class="grid gap-4 md:grid-cols-3">
 		{socialProofEntries.map((proof) => (
-			<article class="rounded-2xl border border-white/5 bg-slate-950/40 p-5">
-				<p class="text-base text-slate-100">“{proof.quote}”</p>
-				<div class="mt-4 text-sm text-slate-400">
-					<p class="font-semibold text-slate-200">{proof.author}</p>
+			<article class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/80 p-5">
+				<p class="text-base text-rose-50">“{proof.quote}”</p>
+				<div class="mt-4 text-sm text-rose-300/80">
+					<p class="font-semibold text-rose-100">{proof.author}</p>
 					{proof.title && <p>{proof.title}</p>}
 				</div>
 			</article>
