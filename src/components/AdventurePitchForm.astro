@@ -1,30 +1,30 @@
 ---
 const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 ---
-<section id="adventure-pitch" class="rounded-3xl border border-white/10 bg-slate-950/40 p-8 shadow-lg shadow-emerald-500/10">
+<section id="adventure-pitch" class="rounded-3xl border border-rose-50/15 bg-[#150e0c]/85 p-8 shadow-lg shadow-amber-500/10">
 	<div class="flex flex-col gap-6">
 		<header class="flex flex-col gap-2">
-			<p class="text-sm uppercase tracking-[0.3em] text-emerald-300">Adventure pitches</p>
+			<p class="text-xs uppercase tracking-[0.18em] text-rose-300/80">Adventure pitches</p>
 			<h2 class="text-3xl font-semibold text-white">Pitch the plan before we lock the time</h2>
 			<p class="text-base text-slate-300">
 				Give me the who, what, where, and why it matters. Snacks, playlists, and dress codes help.
 			</p>
 		</header>
 		<form id="adventure-pitch-form" class="grid gap-4" method="post" action="/api/pitch">
-			<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+			<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
 				Name or nickname
 				<input
-					class="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+					class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
 					type="text"
 					name="name"
 					required
 					placeholder="Legal name, field alias, or code name"
 				/>
 			</label>
-				<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+				<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
 					Where do I reply?
 				<input
-					class="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+					class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
 					type="text"
 					name="contact"
 					required
@@ -34,36 +34,36 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 			<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
 				Adventure details
 				<textarea
-					class="min-h-[140px] rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+					class="min-h-[140px] rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
 					name="adventure"
 					required
 					placeholder="Sunrise flea market, rooftop ramen, beach day—be specific"
 				></textarea>
 			</label>
 			<div class="grid gap-4 md:grid-cols-2">
-				<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+				<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
 					Ideal timing
 					<input
-						class="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+						class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
 						type="text"
 						name="timeline"
 					placeholder="Next Friday night, Sunday sunrise, post-pilates, etc."
 					/>
 				</label>
-				<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+				<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
 					Energy check
 					<input
-						class="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+						class="rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
 						type="text"
 						name="vibes"
 					placeholder="Cozy, bougie, adventurous, low-key, etc."
 					/>
 				</label>
 			</div>
-			<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+			<label class="flex flex-col gap-2 text-sm font-medium text-rose-100">
 				Anything else I should know?
 				<textarea
-					class="min-h-[100px] rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+					class="min-h-[100px] rounded-2xl border border-rose-50/10 bg-[#1b1310]/70 px-4 py-3 text-base text-white placeholder:text-rose-400 focus:border-amber-200 focus:outline-none"
 					name="extras"
 					placeholder="Allergies, +1s, must-play songs, non-negotiables"
 				></textarea>
@@ -71,7 +71,7 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 			<div class="flex flex-col gap-2">
 				<button
 					type="submit"
-					class="inline-flex items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 via-teal-400 to-sky-400 px-6 py-3 text-base font-semibold text-slate-950 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+					class="inline-flex items-center justify-center rounded-2xl bg-amber-300 px-6 py-3 text-base font-semibold text-[#1c120e] transition hover:bg-amber-200 disabled:cursor-not-allowed disabled:opacity-60"
 				>
 					Send the pitch
 				</button>
@@ -79,13 +79,13 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 					href={adventureCalUrl}
 					target="_blank"
 					rel="noreferrer"
-					class="text-sm text-slate-400 underline-offset-4 transition hover:text-white hover:underline"
+					class="text-sm text-rose-200/80 underline-offset-4 transition hover:text-white hover:underline"
 				>
 					Already approved? Skip to the Cal booking.
 				</a>
 			</div>
 		</form>
-		<p id="adventure-pitch-feedback" class="text-sm text-slate-300" aria-live="polite">
+		<p id="adventure-pitch-feedback" class="text-sm text-rose-200/80" aria-live="polite">
 			Expect a response from justin@justin-napolitano.com once I cross-check the calendar. Already in
 			motion?
 			<a class="text-emerald-300 underline-offset-4 hover:underline" href={adventureCalUrl} target="_blank" rel="noreferrer">
@@ -108,9 +108,9 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 		} else {
 			feedback.textContent = message;
 		}
-		feedback.classList.remove('text-emerald-300', 'text-rose-300');
+		feedback.classList.remove('text-amber-300', 'text-rose-300');
 		if (state === 'success') {
-			feedback.classList.add('text-emerald-300');
+			feedback.classList.add('text-amber-300');
 		} else if (state === 'error') {
 			feedback.classList.add('text-rose-300');
 		}

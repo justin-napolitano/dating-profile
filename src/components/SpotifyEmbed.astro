@@ -5,9 +5,9 @@ const embedOverride = import.meta.env.PUBLIC_SPOTIFY_EMBED_URL;
 const embedUrl = embedOverride || spotifyEmbed.embedUrl || '';
 const profileUrl = spotifyEmbed.profileUrl || embedOverride?.replace('/embed/', '/') || '';
 ---
-<section class="rounded-3xl border border-white/5 bg-slate-900/30 p-6">
+<section class="rounded-3xl border border-rose-50/10 bg-[#150e0c]/80 p-6">
 	<header class="mb-4">
-		<p class="text-sm uppercase tracking-[0.3em] text-slate-400">Soundtrack flex</p>
+		<p class="text-xs uppercase tracking-[0.18em] text-rose-300/80">Soundtrack flex</p>
 		<h2 class="text-2xl font-semibold text-white">{spotifyEmbed.title}</h2>
 		<p class="text-slate-300">{spotifyEmbed.description}</p>
 	</header>
@@ -22,8 +22,8 @@ const profileUrl = spotifyEmbed.profileUrl || embedOverride?.replace('/embed/', 
 			referrerpolicy="no-referrer"
 		></iframe>
 	) : (
-		<div class="flex flex-col gap-4 rounded-2xl border border-white/10 bg-slate-950/50 p-5">
-			<p class="text-sm text-slate-300">
+		<div class="flex flex-col gap-4 rounded-2xl border border-rose-50/10 bg-[#1b1310]/80 p-5">
+			<p class="text-sm text-rose-200/80">
 				Spotify won't stream the live queue, so feel free to follow along directly on the profile.
 			</p>
 			{profileUrl && (
@@ -31,7 +31,7 @@ const profileUrl = spotifyEmbed.profileUrl || embedOverride?.replace('/embed/', 
 					href={profileUrl}
 					target="_blank"
 					rel="noreferrer"
-					class="inline-flex items-center justify-center rounded-2xl bg-emerald-400/90 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-emerald-300"
+					class="inline-flex items-center justify-center rounded-2xl bg-amber-300 px-4 py-2 text-sm font-semibold text-[#1b1310] transition hover:bg-amber-200"
 				>
 					Open the moody playlist
 				</a>
