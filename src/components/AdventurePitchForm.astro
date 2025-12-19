@@ -7,7 +7,7 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 			<p class="text-sm uppercase tracking-[0.3em] text-emerald-300">Adventure pitches</p>
 			<h2 class="text-3xl font-semibold text-white">Pitch the plan before we lock the time</h2>
 			<p class="text-base text-slate-300">
-				Give me the who/what/why, and I'll send the green light plus the Cal link.
+				Give me the who, what, where, and why it matters. Snacks, playlists, and dress codes help.
 			</p>
 		</header>
 		<form id="adventure-pitch-form" class="grid gap-4" method="post" action="/api/pitch">
@@ -18,17 +18,17 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 					type="text"
 					name="name"
 					required
-					placeholder="Jay, spontaneous instigator"
+					placeholder="Legal name, field alias, or code name"
 				/>
 			</label>
-			<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
-				Where to reply
+				<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
+					Where do I reply?
 				<input
 					class="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
 					type="text"
 					name="contact"
 					required
-					placeholder="IG @, Signal handle, or email"
+					placeholder="Signal, IG, email—whatever you check"
 				/>
 			</label>
 			<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
@@ -37,7 +37,7 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 					class="min-h-[140px] rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
 					name="adventure"
 					required
-					placeholder="Sunrise drive to Storm King, brunch picnic, finish with vinyl + board games"
+					placeholder="Sunrise flea market, rooftop ramen, beach day—be specific"
 				></textarea>
 			</label>
 			<div class="grid gap-4 md:grid-cols-2">
@@ -47,7 +47,7 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 						class="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
 						type="text"
 						name="timeline"
-						placeholder="Next Friday, late June, etc."
+					placeholder="Next Friday night, Sunday sunrise, post-pilates, etc."
 					/>
 				</label>
 				<label class="flex flex-col gap-2 text-sm font-medium text-slate-100">
@@ -56,7 +56,7 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 						class="rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
 						type="text"
 						name="vibes"
-						placeholder="Cozy, chaotic, bougie, etc."
+					placeholder="Cozy, bougie, adventurous, low-key, etc."
 					/>
 				</label>
 			</div>
@@ -65,7 +65,7 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 				<textarea
 					class="min-h-[100px] rounded-2xl border border-white/10 bg-slate-900/70 px-4 py-3 text-base text-white placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
 					name="extras"
-					placeholder="+1 details, non-negotiables, playlists, etc."
+					placeholder="Allergies, +1s, must-play songs, non-negotiables"
 				></textarea>
 			</label>
 			<div class="flex flex-col gap-2">
@@ -81,12 +81,13 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 					rel="noreferrer"
 					class="text-sm text-slate-400 underline-offset-4 transition hover:text-white hover:underline"
 				>
-					Already approved? Jump straight to the Cal link.
+					Already approved? Skip to the Cal booking.
 				</a>
 			</div>
 		</form>
 		<p id="adventure-pitch-feedback" class="text-sm text-slate-300" aria-live="polite">
-			I'll reply from justin@justin-napolitano.com before we hop on the calendar. Already in motion?
+			Expect a response from justin@justin-napolitano.com once I cross-check the calendar. Already in
+			motion?
 			<a class="text-emerald-300 underline-offset-4 hover:underline" href={adventureCalUrl} target="_blank" rel="noreferrer">
 				cal.com/justin-napolitano-gvu3p3/adventure
 			</a>
@@ -139,7 +140,7 @@ const adventureCalUrl = 'https://cal.com/justin-napolitano-gvu3p3/adventure';
 				throw new Error(result?.error ?? 'Unable to send the pitch right now. Try again.');
 			}
 			form.reset();
-			const successMessage = `Pitch sent. I'll reply ASAP - or grab your slot via <a class="underline" target="_blank" rel="noreferrer" href="${calUrl}">Cal</a>.`;
+			const successMessage = `Pitch logged. Expect clearance soon — or claim a slot via <a class="underline" target="_blank" rel="noreferrer" href="${calUrl}">Cal</a>.`;
 			setFeedback(successMessage, 'success', true);
 		} catch (error) {
 			const message = error instanceof Error ? error.message : 'Unknown error. Please try again soon.';

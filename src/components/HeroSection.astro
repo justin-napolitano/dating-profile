@@ -8,10 +8,17 @@ import { profile } from '../config/profile';
 		</span>
 		<div class="flex flex-col gap-2">
 			<p class="text-4xl font-semibold text-white">{profile.name}</p>
+			{profile.tagline && <p class="text-lg text-slate-200">{profile.tagline}</p>}
 			<div>
 				<p class="text-sm uppercase tracking-[0.2em] text-slate-400">Location</p>
 				<p class="text-xl text-slate-300">{profile.location}</p>
 			</div>
 		</div>
+		{profile.verificationSummary && (
+			<div class="rounded-2xl border border-white/10 bg-slate-950/40 px-4 py-3">
+				<p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Verification summary</p>
+				<p class="mt-1 text-sm text-slate-200">{profile.verificationSummary}</p>
+			</div>
+		)}
 	</div>
 </section>
